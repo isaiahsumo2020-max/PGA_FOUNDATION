@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - PGAF</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/authService.js" defer></script>
+    <script src="js/donationService.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="font-inter bg-blue-50/50 min-h-screen antialiased">
+
+    <script>
+        if (!isLoggedIn() || !isAdmin()) {
+            window.location.href = 'login.html';
+        }
+    </script>
+
+    <!-- Sidebar -->
+    <div class="flex">
+        <div class="fixed inset-y-0 left-0 w-64 bg-white shadow-xl border-r border-blue-100 z-40 transform -translate-x-full lg:translate-x-0 lg:static lg:h-full transition-transform duration-300 ease-in-out" id="sidebar">
+            <div class="p-6 border-b border-blue-100">
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center shadow-lg">
+                        <i class="fas fa-shield-alt text-yellow-400"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold text-blue-700">PGAF Admin</h2>
+                        <div class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full font-semibold">Administrator</div>
+                    </div>
+                </div>
+            </div>
+            <nav class="mt-8 px-4">
+                <a href="#dashboard" onclick="showSection('dashboard')" class="nav-item flex items-center px-4 py-4 text-gray-700 hover:text-blue-600 font-semibold border-r-4 border-transparent hover:border-blue-600 transition-all dashboard-active:bg-blue-50 dashboard-active:border-blue-600 dashboard-active:text-blue-600">
+                    <i class="fas fa-tachometer-alt w-6 mr-4"></i>
+                    Dashboard
+                </a>
+                <a href="#users" onclick="showSection('users')" class="nav-item flex items-center px-4 py-4 text-gray-700 hover:text-blue-600 font-semibold border-r-4 border-transparent hover:border-blue-600 transition-all">
+                    <i class="fas fa-users w-6 mr-4"></i>
+                    Users
+                </a>
+                <a href="#donations" onclick="showSection('donations')" class="nav-item flex items-center px-4 py-4 text-gray-700 hover:text-blue-600 font-semibold border-r-4 border-transparent hover:border-blue-600 transition-all">
+                    <i class="fas fa-gift w-6 mr-4"></i>
+                    Donations
+                </a>
+                <a href="#programs" onclick="showSection('programs')" class="nav-item flex items-center px-4 py-4 text-gray-700 hover:text-blue-600 font-semibold border-r-4 border-transparent hover:border-blue-600 transition-all">
+                    <i class="fas fa-project-diagram w-6 mr-4"></i>
+                    Programs
+                </a>
+            </nav>
+        </div>
+
+        <!-- Mobile menu button -->
+        <button onclick="toggleSidebar()" class="lg:hidden fixed top-4 left-4 z-50 p-2 bg-white rounded-2xl shadow-lg border border-blue-100 hover:shadow-xl">
+            <i class="fas fa-bars text-xl text-blue-600"></i>
+        </button>
+
+        <!-- Overlay -->
+        <div id="overlay" class="fixed inset-0 bg-black/50 z-30 lg:hidden hidden"></div>
+
+        <!-- Main Content -->
+        <div class="flex-1 lg:ml-64">
+            <!-- Topbar -->
+            <div class="bg-white shadow-sm border-b border-blue-100 px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <h1 class="text-3xl font-bold text-gray-900">Admin Dashboard</h1>
+                    <div class="flex items-center space-x-4">
+                        <span id="adminUser" class="font-semibold text-blue-800 bg-blue-50 px-4 py-2 rounded-xl"></span>
+                        <button onclick="logout()" class="bg-red-50 hover:bg-red-100 text-red-700 px-6 py-3 rounded-2xl font-semibold shadow-sm hover:shadow-md transition-all border border-red-200 flex items-center space-x-2">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Logout
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Content -->
+            <div class="p-8">
+                <!-- Dashboard Overview -->
+                <div id="dashboard-section" class="section">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                        <div class="bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all border border-blue-100 group">
+                            <div class="flex items-center">
+                                <div class="p-4 bg-blue-600 rounded-2xl shadow-lg group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-users text-2xl text-white"></i>
+                                </div>
+                                <div class="ml-6">
+                                    <p class="text-sm font-medium text-gray-600">Total Users</p>
+                                    <p id="totalUsers" class="text-4xl font-bold text-blue-700">0</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all border border-emerald-100 group">
+                            <div class="flex items-center">
+                                <div class="p-4 bg-emerald-600 rounded-2xl shadow-lg group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-dollar-sign text-2xl text-white"></i>
+                                </div>
+                                <div class="ml-6">
+                                    <p class="text-sm font-medium text-gray-600">Total Donations</p>
+                                    <p id="totalDonationsAdmin" class="text-4xl font-bold text-emerald-700">$0</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all border border-yellow-100 group">
+                            <div class="flex items-center">
+                                <div class="p-4 bg-yellow-500 rounded-2xl shadow-lg group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-gift text-2xl text-white"></i>
+                                </div>
+                                <div class="ml-6">
+                                    <p class="text-sm font-medium text-gray-600">Donations Today</p>
+                                    <p id="todayDonations" class="text-4xl font-bold text-yellow-600">0</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all border border-orange-100 group">
+                            <div class="flex items-center">
+                                <div class="p-4 bg-orange-600 rounded-2xl shadow-lg group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-chart-line text-2xl text-white"></i>
+                                </div>
+                                <div class="ml-6">
+                                    <p class="text-sm font-medium text-gray-600">Growth Rate</p>
+                                    <p class="text-4xl font-bold text-orange-700">+12%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <div class="bg-white rounded-3xl shadow-xl border border-blue-100 overflow-hidden">
+                            <div class="p-8 border-b border-blue-100 bg-blue-50">
+                                <h3 class="text-2xl font-bold text-blue-900 flex items-center">
+                                    <i class="fas fa-gift mr-3 text-blue-600"></i>
+                                    Recent Donations
+                                </h3>
+                            </div>
+                            <div id="recentDonationsAdmin" class="p-0 max-h-96 overflow-y-auto">
+                                <!-- Dynamic content -->
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-3xl shadow-xl border border-emerald-100 overflow-hidden">
+                            <div class="p-8 border-b border-emerald-100 bg-emerald-50">
+                                <h3 class="text-2xl font-bold text-emerald-900 flex items-center">
+                                    <i class="fas fa-users mr-3 text-emerald-600"></i>
+                                    Recent Users
+                                </h3>
+                            </div>
+                            <div id="recentUsers" class="p-0 max-h-96 overflow-y-auto">
+                                <!-- Dynamic content -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Users Section -->
+                <div id="users-section" class="section hidden">
+                    <div class="bg-white rounded-3xl shadow-xl border border-blue-100 overflow-hidden">
+                        <div class="p-8 border-b border-blue-100 bg-blue-50">
+                            <h3 class="text-2xl font-bold text-blue-900 flex items-center">
+                                <i class="fas fa-users mr-4 text-blue-600"></i>
+                                User Management
+                            </h3>
+                        </div>
+                        <div id="usersTable" class="overflow-x-auto">
+                            <!-- Dynamic table -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Donations Section -->
+                <div id="donations-section" class="section hidden">
+                    <div class="bg-white rounded-3xl shadow-xl border border-emerald-100 overflow-hidden">
+                        <div class="p-8 border-b border-emerald-100 bg-emerald-50">
+                            <h3 class="text-2xl font-bold text-emerald-900 flex items-center">
+                                <i class="fas fa-gift mr-4 text-emerald-600"></i>
+                                All Donations
+                            </h3>
+                            <p class="text-gray-600 mt-2">Complete donation history and analytics</p>
+                        </div>
+                        <div id="donationsTable" class="overflow-x-auto">
+                            <!-- Dynamic table -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Programs Section -->
+                <div id="programs-section" class="section hidden">
+                    <div class="bg-white rounded-3xl shadow-xl border border-blue-100 p-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-8 flex items-center">
+                            <i class="fas fa-project-diagram mr-3 text-blue-600"></i>
+                            Programs Management
+                        </h3>
+                        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            <div class="p-12 border-2 border-dashed border-blue-200 rounded-3xl text-center hover:border-blue-400 hover:bg-blue-50 transition-all cursor-pointer group">
+                                <i class="fas fa-plus-circle text-6xl text-blue-300 mb-8 group-hover:text-blue-500 group-hover:scale-110 transition-all"></i>
+                                <h4 class="text-2xl font-bold text-gray-900 mb-4 group-hover:text-blue-600">New Program</h4>
+                                <p class="text-gray-600 text-lg">Create new youth empowerment program</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const user = getCurrentUser();
+            document.getElementById('adminUser').textContent = `Welcome, ${user.name}`;
+            loadAdminData();
+            showSection('dashboard');
+        });
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            sidebar.classList.toggle('-translate-x-full');
+            overlay.classList.toggle('hidden');
+        }
+
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(s => s.classList.add('hidden'));
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('bg-blue-50', 'border-blue-600', 'text-blue-600');
+            });
+            
+            document.getElementById(`${sectionId}-section`).classList.remove('hidden');
+            event.target.classList.add('bg-blue-50', 'border-blue-600', 'text-blue-600');
+        }
+
+        async function loadAdminData() {
+            // Load stats
+            const users = authService.getAllUsers();
+            const donations = donationService.getAllDonations();
+            const today = new Date().toDateString();
+            const todayDonations = donations.filter(d => new Date(d.date).toDateString() === today);
+
+            document.getElementById('totalUsers').textContent = users.length;
+            document.getElementById('totalDonationsAdmin').textContent = `$${donations.reduce((sum, d) => sum + d.amount, 0).toLocaleString()}`;
+            document.getElementById('todayDonations').textContent = todayDonations.length;
+
+            // Recent donations
+            updateRecentDonations(donations.slice(0, 5));
+            updateRecentUsers(users.slice(0, 5));
+
+            // Users table
+            updateUsersTable(users);
+
+            // Donations table
+            updateDonationsTable(donations);
+        }
+
+        function updateRecentDonations(donations) {
+            const container = document.getElementById('recentDonationsAdmin');
+            container.innerHTML = donations.length ? 
+                donations.map(d => `
+                    <div class="p-6 border-b border-blue-50 hover:bg-blue-50 transition-colors">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <div class="font-bold text-xl text-blue-700">${formatCurrency(d.amount, d.currency)}</div>
+                                <div class="text-sm text-gray-600">${new Date(d.date).toLocaleString()}</div>
+                            </div>
+                            <span class="px-4 py-2 bg-emerald-100 text-emerald-800 rounded-xl text-sm font-semibold border border-emerald-200">Completed</span>
+                        </div>
+                    </div>
+                `).join('') : 
+                '<div class="p-12 text-center text-gray-500"><i class="fas fa-inbox text-4xl mb-4 text-blue-300"></i><p class="text-lg">No recent donations</p></div>';
+        }
+
+        function updateRecentUsers(users) {
+            const container = document.getElementById('recentUsers');
+            container.innerHTML = users.length ? 
+                users.map(u => `
+                    <div class="p-6 border-b border-emerald-50 hover:bg-emerald-50 transition-colors">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg">${u.name.charAt(0)}</div>
+                                <div class="ml-4">
+                                    <div class="font-semibold text-gray-900">${u.name}</div>
+                                    <div class="text-sm text-gray-600">${u.email}</div>
+                                </div>
+                            </div>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-semibold">${u.role}</span>
+                        </div>
+                    </div>
+                `).join('') : 
+                '<div class="p-12 text-center text-gray-500"><i class="fas fa-users text-4xl mb-4 text-emerald-300"></i><p class="text-lg">No users yet</p></div>';
+        }
+
+        function updateUsersTable(users) {
+            const container = document.getElementById('usersTable');
+            container.innerHTML = `
+                <table class="w-full">
+                    <thead class="bg-blue-50">
+                        <tr>
+                            <th class="px-6 py-4 text-left text-xs font-bold text-blue-700 uppercase tracking-wider">Name</th>
+                            <th class="px-6 py-4 text-left text-xs font-bold text-blue-700 uppercase tracking-wider">Email</th>
+                            <th class="px-6 py-4 text-left text-xs font-bold text-blue-700 uppercase tracking-wider">Role</th>
+                            <th class="px-6 py-4 text-left text-xs font-bold text-blue-700 uppercase tracking-wider">Joined</th>
+                            <th class="px-6 py-4 text-left text-xs font-bold text-blue-700 uppercase tracking-wider">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${users.map(user => `
+                            <tr class="border-b border-blue-50 hover:bg-blue-50 transition-colors">
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center">
+                                        <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-md">${user.name.charAt(0)}</div>
+                                        <span class="ml-3 font-semibold text-gray-900">${user.name}</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 text-sm text-gray-900">${user.email}</td>
+                                <td class="px-6 py-4">
+                                    <span class="px-3 py-1 bg-${user.role === 'admin' ? 'blue' : 'emerald'}-100 text-${user.role === 'admin' ? 'blue' : 'emerald'}-800 rounded-full text-xs font-semibold">${user.role}</span>
+                                </td>
+                                <td class="px-6 py-4 text-sm text-gray-600">${new Date(user.joined).toLocaleDateString()}</td>
+                                <td class="px-6 py-4 text-sm">
+                                    <button class="text-blue-600 hover:text-blue-800 mr-3 hover:scale-110 transition-all">
+                                        <i class="fas fa-edit text-lg"></i>
+                                    </button>
+                                    <button class="text-red-600 hover:text-red-800 hover:scale-110 transition-all">
+                                        <i class="fas fa-trash text-lg"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+        }
+
+        function updateDonationsTable(donations) {
+            const container = document.getElementById('donationsTable');
+            container.innerHTML = `
+                <table class="w-full">
+                    <thead class="bg-emerald-50">
+                        <tr>
+                            <th class="px-6 py-4 text-left text-xs font-bold text-emerald-700 uppercase tracking-wider">Amount</th>
+                            <th class="px-6 py-4 text-left text-xs font-bold text-emerald-700 uppercase tracking-wider">User</th>
+                            <th class="px-6 py-4 text-left text-xs font-bold text-emerald-700 uppercase tracking-wider">Currency</th>
+                            <th class="px-6 py-4 text-left text-xs font-bold text-emerald-700 uppercase tracking-wider">Date</th>
+                            <th class="px-6 py-4 text-left text-xs font-bold text-emerald-700 uppercase tracking-wider">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${donations.slice(0, 20).map(donation => `
+                            <tr class="border-b border-emerald-50 hover:bg-emerald-50 transition-colors">
+                                <td class="px-6 py-4 font-bold text-2xl text-emerald-600">${donation.amount}</td>
+                                <td class="px-6 py-4 font-semibold text-gray-900">${donation.userId}</td>
+                                <td class="px-6 py-4 font-bold text-blue-700">${donation.currency}</td>
+                                <td class="px-6 py-4 text-sm text-gray-600">${new Date(donation.date).toLocaleString()}</td>
+                                <td class="px-6 py-4">
+                                    <span class="px-4 py-2 bg-emerald-100 text-emerald-800 rounded-xl font-semibold border border-emerald-200">Completed</span>
+                                </td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+        }
+
+        function formatCurrency(amount, currency) {
+            return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount);
+        }
+    </script>
+</body>
+</html>

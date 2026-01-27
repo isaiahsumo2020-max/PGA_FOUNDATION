@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - PGAF</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/authService.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="font-inter bg-blue-50/50 min-h-screen antialiased">
+    <div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl w-full space-y-8">
+            <div class="text-center">
+                <div class="mx-auto w-24 h-24 bg-blue-600 rounded-3xl flex items-center justify-center shadow-2xl mb-6">
+                    <i class="fas fa-user-plus text-4xl text-yellow-400"></i>
+                </div>
+                <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
+                    Join PGAF Community
+                </h2>
+                <p class="text-xl text-gray-700 max-w-md mx-auto leading-relaxed">
+                    Become part of our mission to empower Liberian youth and create lasting opportunities.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Form -->
+                <form class="bg-white/90 backdrop-blur-xl rounded-3xl p-10 shadow-2xl border border-blue-100 space-y-6" onsubmit="handleSignup(event)">
+                    <div>
+                        <label for="name" class="block text-sm font-bold text-gray-900 mb-3">Full Name</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center">
+                                <i class="fas fa-user text-blue-500"></i>
+                            </div>
+                            <input id="name" name="name" type="text" required 
+                                   class="pl-12 w-full px-5 py-4 border border-blue-200 rounded-2xl shadow-sm focus:ring-3 focus:ring-blue-200 focus:border-blue-500 transition-all duration-300 bg-white hover:border-blue-300" 
+                                   placeholder="Enter your full name">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="email" class="block text-sm font-bold text-gray-900 mb-3">Email Address</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center">
+                                <i class="fas fa-envelope text-emerald-500"></i>
+                            </div>
+                            <input id="email" name="email" type="email" required 
+                                   class="pl-12 w-full px-5 py-4 border border-blue-200 rounded-2xl shadow-sm focus:ring-3 focus:ring-emerald-200 focus:border-emerald-500 transition-all duration-300 bg-white hover:border-blue-300" 
+                                   placeholder="your.email@example.com">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="password" class="block text-sm font-bold text-gray-900 mb-3">Password</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center">
+                                <i class="fas fa-lock text-yellow-500"></i>
+                            </div>
+                            <input id="password" name="password" type="password" required minlength="6"
+                                   class="pl-12 w-full px-5 py-4 border border-blue-200 rounded-2xl shadow-sm focus:ring-3 focus:ring-yellow-200 focus:border-yellow-500 transition-all duration-300 bg-white hover:border-blue-300 pr-12" 
+                                   placeholder="Create a secure password (6+ characters)">
+                            <button type="button" onclick="togglePassword()" class="absolute inset-y-0 right-0 pr-4 flex items-center hover:text-gray-600 transition-colors">
+                                <i id="toggleIcon" class="fas fa-eye text-gray-400 text-lg"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="signupBtn" class="w-full flex items-center justify-center px-8 py-5 border border-transparent text-xl font-bold rounded-3xl shadow-2xl bg-blue-600 hover:bg-blue-700 text-white focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all duration-300 hover:shadow-3xl hover:-translate-y-1 group">
+                        <span class="mr-3">
+                            <i class="fas fa-rocket text-xl group-hover:scale-110 transition-transform"></i>
+                        </span>
+                        Create Account
+                    </button>
+                </form>
+
+                <!-- Benefits -->
+                <div class="space-y-6 lg:pl-8">
+                    <div class="bg-blue-600 text-white p-8 rounded-3xl shadow-2xl border border-blue-700">
+                        <h3 class="text-2xl font-bold mb-6 flex items-center">
+                            <i class="fas fa-star text-yellow-400 mr-3 text-2xl"></i>
+                            Why Join PGAF?
+                        </h3>
+                        <ul class="space-y-4 text-blue-100">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-yellow-300 mr-3 text-xl"></i>
+                                Track your donations & impact
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-yellow-300 mr-3 text-xl"></i>
+                                Access exclusive events
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-yellow-300 mr-3 text-xl"></i>
+                                Volunteer opportunities
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-yellow-300 mr-3 text-xl"></i>
+                                Program updates & newsletters
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="text-center pt-8 border-t border-blue-200">
+                        <p class="text-gray-700 mb-6 font-semibold">Already have an account?</p>
+                        <a href="login.html" class="inline-flex items-center px-8 py-4 bg-white hover:bg-blue-50 text-blue-700 font-bold rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border-2 border-blue-200 hover:border-blue-400">
+                            <i class="fas fa-sign-in-alt mr-3 text-xl"></i>
+                            Sign In Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let passwordVisible = false;
+
+        function togglePassword() {
+            const passwordField = document.getElementById('password');
+            const toggleIcon = document.getElementById('toggleIcon');
+            passwordVisible = !passwordVisible;
+            passwordField.type = passwordVisible ? 'text' : 'password';
+            toggleIcon.className = passwordVisible ? 'fas fa-eye-slash' : 'fas fa-eye';
+        }
+
+        async function handleSignup(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const userData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value
+            };
+            
+            const submitBtn = document.getElementById('signupBtn');
+            const originalText = submitBtn.innerHTML;
+            
+            try {
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-3"></i>Creating Account...';
+                submitBtn.disabled = true;
+
+                const user = await signup(userData);
+                
+                alert(`Welcome to PGAF, ${user.name}! Redirecting to your dashboard...`);
+                window.location.href = 'dashboard.html';
+                
+            } catch (error) {
+                alert('Error: ' + error.message);
+            } finally {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>

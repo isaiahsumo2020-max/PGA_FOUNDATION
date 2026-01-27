@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - PGAF</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/authService.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="font-inter bg-blue-50/50 min-h-screen antialiased">
+    <div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-md w-full space-y-8">
+            <div>
+                <div class="mx-auto h-20 w-20 bg-blue-600 rounded-2xl flex items-center justify-center shadow-2xl">
+                    <i class="fas fa-fire text-3xl text-yellow-400"></i>
+                </div>
+                <h2 class="mt-6 text-center text-3xl font-bold text-gray-900">
+                    Sign in to PGAF
+                </h2>
+                <p class="mt-2 text-center text-xl text-gray-700">
+                    Welcome back! Please login to your account.
+                </p>
+            </div>
+            <form class="mt-8 space-y-6 bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-blue-100" onsubmit="handleLogin(event)">
+                <div class="space-y-4">
+                    <div>
+                        <label for="email" class="block text-sm font-semibold text-gray-800 mb-3">Email Address</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                <i class="fas fa-envelope text-blue-400"></i>
+                            </div>
+                            <input id="email" name="email" type="email" required 
+                                   class="pl-12 w-full px-5 py-4 border border-blue-200 rounded-2xl shadow-sm focus:ring-3 focus:ring-blue-500/30 focus:border-blue-500 transition-all duration-300 bg-white/50 backdrop-blur-sm text-lg placeholder-gray-500"
+                                   placeholder="Enter your email">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="password" class="block text-sm font-semibold text-gray-800 mb-3">Password</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                <i class="fas fa-lock text-blue-400"></i>
+                            </div>
+                            <input id="password" name="password" type="password" required 
+                                   class="pl-12 w-full px-5 py-4 border border-blue-200 rounded-2xl shadow-sm focus:ring-3 focus:ring-blue-500/30 focus:border-blue-500 transition-all duration-300 bg-white/50 backdrop-blur-sm text-lg placeholder-gray-500"
+                                   placeholder="Enter your password">
+                            <button type="button" onclick="togglePassword()" class="absolute inset-y-0 right-0 pr-4 flex items-center hover:text-blue-600 transition-colors">
+                                <i id="toggleIcon" class="fas fa-eye text-blue-400 hover:text-blue-500 text-lg"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-blue-50 border-2 border-blue-200 p-5 rounded-2xl mb-6">
+                    <div class="flex items-start space-x-3">
+                        <div class="flex-shrink-0 mt-0.5">
+                            <i class="fas fa-info-circle text-blue-500 text-xl"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm font-semibold text-blue-900 leading-relaxed">
+                                <strong>Demo Login:</strong> john@example.com / password123<br>
+                                <strong>Admin:</strong> admin@pgaf.org / admin123
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="group relative w-full flex justify-center items-center py-5 px-6 border border-transparent text-xl font-bold rounded-2xl shadow-xl bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500/30 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-2xl text-white space-x-3">
+                    <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    <span>Sign In</span>
+                </button>
+            </form>
+
+            <div class="text-center">
+                <a href="signup.html" class="font-semibold text-blue-600 hover:text-blue-700 text-lg transition-all duration-200 hover:underline">
+                    Don't have an account? <span class="font-bold">Sign up</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let passwordVisible = false;
+
+        function togglePassword() {
+            const passwordField = document.getElementById('password');
+            const toggleIcon = document.getElementById('toggleIcon');
+            
+            passwordVisible = !passwordVisible;
+            passwordField.type = passwordVisible ? 'text' : 'password';
+            toggleIcon.className = passwordVisible ? 'fas fa-eye-slash' : 'fas fa-eye';
+        }
+
+        async function handleLogin(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const submitBtn = event.target.querySelector('button[type="submit"]');
+            
+            try {
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-3"></i><span>Signing In...</span>';
+                submitBtn.disabled = true;
+
+                const user = await login(email, password);
+                
+                // Redirect based on role
+                if (user.role === 'admin') {
+                    window.location.href = 'admin.html';
+                } else {
+                    window.location.href = 'dashboard.html';
+                }
+            } catch (error) {
+                alert(error.message);
+            } finally {
+                submitBtn.innerHTML = '<i class="fas fa-arrow-right mr-3"></i><span>Sign In</span>';
+                submitBtn.disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vision, Mission & Core Values - PGAF</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/authService.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="font-inter bg-blue-50/50 min-h-screen antialiased">
+
+    <!-- Navigation (Updated to match new index.html branding) -->
+    <nav class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-blue-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center space-x-3 group">
+                    <div class="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300">
+                        <i class="fas fa-fire text-yellow-400 text-xl"></i>
+                    </div>
+                    <div>
+                        <div class="text-xl font-bold text-blue-700 tracking-tight">PGAF</div>
+                        <div class="text-xs font-semibold text-blue-600 uppercase tracking-wider">Passionate Goals Achievers Foundation</div>
+                    </div>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 px-2 py-1 border-b-2 border-transparent hover:border-blue-500">Home</a>
+                    <a href="about.html" class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 px-2 py-1 border-b-2 border-transparent hover:border-blue-500">About</a>
+                    <a href="vision.html" class="text-blue-600 font-bold border-b-2 border-blue-500 px-2 py-1">Vision & Mission</a>
+                    <a href="programs.html" class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 px-2 py-1 border-b-2 border-transparent hover:border-blue-500">Programs</a>
+                    <a href="team.html" class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 px-2 py-1 border-b-2 border-transparent hover:border-blue-500">Team</a>
+                    <a href="events.html" class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 px-2 py-1 border-b-2 border-transparent hover:border-blue-500">Events</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 px-2 py-1 border-b-2 border-transparent hover:border-blue-500">Contact</a>
+                    <a href="map.html" class="text-blue-600 font-bold border-b-2 border-blue-500 px-2 py-1">Map</a>
+                </div>
+
+                <!-- Auth & Mobile -->
+                <div class="flex items-center space-x-4">
+                    <div id="userStatus" class="hidden items-center space-x-3 bg-blue-50 px-4 py-2 rounded-xl">
+                        <span id="userName" class="font-semibold text-blue-800 text-sm"></span>
+                        <button onclick="logout()" class="text-red-600 hover:text-red-700 text-sm font-medium transition-colors">Logout</button>
+                    </div>
+                    <a id="loginBtn" href="login.html" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-xl font-semibold text-sm shadow-md hover:shadow-lg transition-all duration-200">
+                        Sign In
+                    </a>
+                    <button class="md:hidden p-2 text-blue-600 hover:text-blue-700" onclick="toggleMobileMenu()">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="md:hidden hidden bg-white border-t border-blue-100 shadow-lg">
+            <div class="px-4 pt-4 pb-6 space-y-2">
+                <a href="index.html" class="block px-4 py-3 text-gray-700 hover:text-blue-600 font-medium rounded-xl hover:bg-blue-50">Home</a>
+                <a href="about.html" class="block px-4 py-3 text-gray-700 hover:text-blue-600 font-medium rounded-xl hover:bg-blue-50">About</a>
+                <a href="vision.html" class="block px-4 py-3 text-blue-600 font-bold bg-blue-50 rounded-xl px-4 py-3">Vision & Mission</a>
+                <a href="programs.html" class="block px-4 py-3 text-gray-700 hover:text-blue-600 font-medium rounded-xl hover:bg-blue-50">Programs</a>
+                <a href="team.html" class="block px-4 py-3 text-gray-700 hover:text-blue-600 font-medium rounded-xl hover:bg-blue-50">Team</a>
+                <a href="events.html" class="block px-4 py-3 text-gray-700 hover:text-blue-600 font-medium rounded-xl hover:bg-blue-50">Events</a>
+                <a href="contact.html" class="block px-4 py-3 text-gray-700 hover:text-blue-600 font-medium rounded-xl hover:bg-blue-50">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section - Logo Colors -->
+    <section class="relative pt-32 pb-24 bg-blue-600/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center bg-yellow-400/90 px-6 py-3 rounded-full text-sm font-bold text-blue-900 mb-8 shadow-lg backdrop-blur-sm max-w-md mx-auto">
+                <i class="fas fa-compass mr-2 text-blue-700"></i>
+                Our Guiding Principles
+            </div>
+            <h1 class="text-5xl lg:text-6xl font-bold text-gray-900 mb-8 leading-tight">
+                Vision • Mission • 
+                <span class="block text-4xl lg:text-5xl text-blue-700 font-black tracking-tight">Core Values</span>
+            </h1>
+            <p class="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed mb-12">
+                The foundation that drives Passionate Goals Achievers Foundation to transform youth lives across Liberia and beyond.
+            </p>
+        </div>
+    </section>
+
+    <!-- Vision & Mission Cards - Clean Design -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center mb-24">
+                <!-- Vision -->
+                <div class="group hover:-translate-y-4 transition-all duration-500">
+                    <div class="bg-white rounded-3xl p-12 shadow-xl hover:shadow-2xl border border-blue-100 hover:border-blue-200 transition-all duration-500">
+                        <div class="text-center mb-12">
+                            <div class="inline-flex w-24 h-24 bg-blue-600 rounded-3xl flex items-center justify-center shadow-2xl mb-8 mx-auto">
+                                <i class="fas fa-binoculars text-3xl text-white"></i>
+                            </div>
+                            <h2 class="text-4xl lg:text-5xl font-black text-blue-700 mb-6 tracking-tight">OUR VISION</h2>
+                        </div>
+                        <blockquote class="text-2xl text-gray-900 font-light italic leading-relaxed text-center">
+                            "A Liberia where <span class="font-black text-3xl text-blue-700">every youth</span> has access to quality education, entrepreneurial opportunities, and platforms to unleash their creative potential."
+                        </blockquote>
+                        <div class="text-center mt-12">
+                            <div class="inline-flex px-8 py-4 bg-blue-50 border-2 border-blue-200 rounded-3xl shadow-lg">
+                                <span class="text-3xl font-black text-blue-700">2030</span>
+                                <span class="ml-4 text-lg font-semibold text-blue-600">Vision Timeline</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mission -->
+                <div class="group hover:-translate-y-4 transition-all duration-500">
+                    <div class="bg-white rounded-3xl p-12 shadow-xl hover:shadow-2xl border border-emerald-100 hover:border-emerald-200 transition-all duration-500">
+                        <div class="text-center mb-12">
+                            <div class="inline-flex w-24 h-24 bg-emerald-600 rounded-3xl flex items-center justify-center shadow-2xl mb-8 mx-auto">
+                                <i class="fas fa-bullseye text-3xl text-white"></i>
+                            </div>
+                            <h2 class="text-4xl lg:text-5xl font-black text-emerald-700 mb-6 tracking-tight">OUR MISSION</h2>
+                        </div>
+                        <div class="grid grid-cols-2 gap-6 mb-12">
+                            <div class="group/pill p-6 bg-blue-50 border-2 border-blue-200 rounded-2xl hover:bg-blue-100 transition-all hover:-translate-y-2">
+                                <i class="fas fa-graduation-cap text-2xl text-blue-600 mb-4"></i>
+                                <div class="font-bold text-xl text-gray-900">Education</div>
+                            </div>
+                            <div class="group/pill p-6 bg-emerald-50 border-2 border-emerald-200 rounded-2xl hover:bg-emerald-100 transition-all hover:-translate-y-2">
+                                <i class="fas fa-briefcase text-2xl text-emerald-600 mb-4"></i>
+                                <div class="font-bold text-xl text-gray-900">Entrepreneurship</div>
+                            </div>
+                            <div class="group/pill p-6 bg-orange-50 border-2 border-orange-200 rounded-2xl hover:bg-orange-100 transition-all hover:-translate-y-2">
+                                <i class="fas fa-palette text-2xl text-orange-600 mb-4"></i>
+                                <div class="font-bold text-xl text-gray-900">Creativity</div>
+                            </div>
+                            <div class="group/pill p-6 bg-yellow-50 border-2 border-yellow-200 rounded-2xl hover:bg-yellow-100 transition-all hover:-translate-y-2">
+                                <i class="fas fa-hands-helping text-2xl text-yellow-600 mb-4"></i>
+                                <div class="font-bold text-xl text-gray-900">Humanitarian Aid</div>
+                            </div>
+                        </div>
+                        <p class="text-xl text-gray-700 leading-relaxed text-center font-semibold">
+                            Through targeted programs, we bridge the opportunity gap for Liberian youth.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Values - Logo Color System -->
+    <section class="py-24 bg-gray-50/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-24">
+                <div class="inline-flex items-center bg-yellow-400/90 px-6 py-3 rounded-full text-sm font-bold text-blue-900 mb-8 shadow-lg backdrop-blur-sm max-w-md mx-auto">
+                    <i class="fas fa-star mr-2 text-blue-700"></i>
+                    What Drives Us
+                </div>
+                <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
+                    Our <span class="text-blue-700 font-black">Core Values</span>
+                </h2>
+                <p class="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
+                    These 5 unshakable principles guide every decision, program, and interaction at PGAF.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Value 1: Transparency -->
+                <div class="group cursor-pointer">
+                    <div class="bg-white rounded-3xl p-10 shadow-xl hover:shadow-2xl border border-blue-100 hover:border-blue-200 hover:-translate-y-4 transition-all duration-500 h-80 flex items-end">
+                        <div class="w-full p-8 bg-blue-600 text-white rounded-2xl -mx-4 -mb-8 relative z-10 shadow-2xl">
+                            <div class="absolute top-6 left-6 w-16 h-16 bg-white/30 rounded-2xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
+                                <i class="fas fa-eye text-xl"></i>
+                            </div>
+                            <div class="text-white">
+                                <h3 class="text-3xl font-black mb-3">01</h3>
+                                <h4 class="text-2xl font-bold mb-4">Transparency</h4>
+                                <p class="text-lg leading-relaxed opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                                    Every dollar accounted for. Full financial disclosure. Donors see exactly where their contributions create impact.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Value 2: Compassion -->
+                <div class="group cursor-pointer">
+                    <div class="bg-white rounded-3xl p-10 shadow-xl hover:shadow-2xl border border-emerald-100 hover:border-emerald-200 hover:-translate-y-4 transition-all duration-500 h-80 flex items-end">
+                        <div class="w-full p-8 bg-emerald-600 text-white rounded-2xl -mx-4 -mb-8 relative z-10 shadow-2xl">
+                            <div class="absolute top-6 right-6 w-16 h-16 bg-white/30 rounded-2xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
+                                <i class="fas fa-heart text-xl"></i>
+                            </div>
+                            <div class="text-white">
+                                <h3 class="text-3xl font-black mb-3">02</h3>
+                                <h4 class="text-2xl font-bold mb-4">Compassion</h4>
+                                <p class="text-lg leading-relaxed opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                                    We serve with genuine empathy, understanding each youth's unique struggles and dreams.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Value 3: Excellence -->
+                <div class="group cursor-pointer">
+                    <div class="bg-white rounded-3xl p-10 shadow-xl hover:shadow-2xl border border-orange-100 hover:border-orange-200 hover:-translate-y-4 transition-all duration-500 h-80 flex items-end">
+                        <div class="w-full p-8 bg-orange-600 text-white rounded-2xl -mx-4 -mb-8 relative z-10 shadow-2xl">
+                            <div class="absolute bottom-6 left-6 w-16 h-16 bg-white/30 rounded-2xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
+                                <i class="fas fa-trophy text-xl"></i>
+                            </div>
+                            <div class="text-white">
+                                <h3 class="text-3xl font-black mb-3">03</h3>
+                                <h4 class="text-2xl font-bold mb-4">Excellence</h4>
+                                <p class="text-lg leading-relaxed opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                                    World-class programs delivered with highest standards. Every youth deserves the best.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Value 4: Innovation -->
+                <div class="group cursor-pointer">
+                    <div class="bg-white rounded-3xl p-10 shadow-xl hover:shadow-2xl border border-yellow-100 hover:border-yellow-200 hover:-translate-y-4 transition-all duration-500 h-80 flex items-end">
+                        <div class="w-full p-8 bg-yellow-500 text-blue-900 rounded-2xl -mx-4 -mb-8 relative z-10 shadow-2xl">
+                            <div class="absolute top-8 left-8 w-16 h-16 bg-blue-900/30 rounded-2xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
+                                <i class="fas fa-lightbulb text-xl text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-3xl font-black mb-3 text-blue-900">04</h3>
+                                <h4 class="text-2xl font-bold mb-4 text-blue-900">Innovation</h4>
+                                <p class="text-lg leading-relaxed opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                                    Pioneering creative solutions for 21st-century youth challenges through technology.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Value 5: Empowerment -->
+                <div class="group cursor-pointer">
+                    <div class="bg-white rounded-3xl p-10 shadow-xl hover:shadow-2xl border border-purple-100 hover:border-purple-200 hover:-translate-y-4 transition-all duration-500 h-80 flex items-end">
+                        <div class="w-full p-8 bg-purple-600 text-white rounded-2xl -mx-4 -mb-8 relative z-10 shadow-2xl">
+                            <div class="absolute bottom-8 right-8 w-16 h-16 bg-white/30 rounded-2xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
+                                <i class="fas fa-rocket text-xl"></i>
+                            </div>
+                            <div class="text-white">
+                                <h3 class="text-3xl font-black mb-3">05</h3>
+                                <h4 class="text-2xl font-bold mb-4">Empowerment</h4>
+                                <p class="text-lg leading-relaxed opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                                    We equip youth with tools for lifelong self-sufficiency and leadership.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section - Logo Colors -->
+    <section class="py-24 bg-blue-600 text-white">
+        <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl lg:text-5xl font-bold mb-8">Live Our Values</h2>
+            <p class="text-2xl mb-12 opacity-90 leading-relaxed max-w-3xl mx-auto">Join us in building a brighter future for Liberian youth.</p>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center max-w-2xl mx-auto">
+                <a href="donation.html" class="flex-1 bg-white hover:bg-blue-50 text-blue-700 px-12 py-6 rounded-2xl font-bold text-xl shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center justify-center space-x-3">
+                    <i class="fas fa-heart text-2xl"></i>
+                    <span>Donate Now</span>
+                </a>
+                <a href="contact.html" class="flex-1 border-2 border-white hover:border-blue-200 px-12 py-6 rounded-2xl font-bold text-xl hover:bg-white/20 backdrop-blur-sm transition-all duration-300">
+                    Get Involved
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Same as index.html) -->
+    <footer class="bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid md:grid-cols-4 gap-12">
+                <!-- Logo & Description -->
+                <div>
+                    <a href="index.html" class="flex items-center space-x-3 mb-8">
+                        <div class="w-14 h-14 bg-blue-600 rounded-2xl flex items-center justify-center shadow-lg">
+                            <i class="fas fa-fire text-yellow-400 text-xl"></i>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold text-white">PGAF</div>
+                            <div class="text-blue-400 font-semibold text-sm">Empowering Purpose. Transforming Lives.</div>
+                        </div>
+                    </a>
+                    <p class="text-gray-400 mb-8 leading-relaxed text-lg">Passionate Goals Achievers Foundation is dedicated to youth empowerment through education, entrepreneurship, and humanitarian outreach in Liberia.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-12 h-12 bg-gray-800 hover:bg-blue-600 rounded-2xl flex items-center justify-center transition-all duration-200">
+                            <i class="fab fa-facebook-f text-white"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-gray-800 hover:bg-blue-600 rounded-2xl flex items-center justify-center transition-all duration-200">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-gray-800 hover:bg-blue-600 rounded-2xl flex items-center justify-center transition-all duration-200">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-gray-800 hover:bg-blue-600 rounded-2xl flex items-center justify-center transition-all duration-200">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-xl font-bold mb-8">Quick Links</h4>
+                    <ul class="space-y-4 text-gray-400">
+                        <li><a href="about.html" class="hover:text-white transition-colors">About PGAF</a></li>
+                        <li><a href="vision.html" class="hover:text-white transition-colors">Vision & Mission</a></li>
+                        <li><a href="programs.html" class="hover:text-white transition-colors">Our Programs</a></li>
+                        <li><a href="team.html" class="hover:text-white transition-colors">Leadership Team</a></li>
+                        <li><a href="events.html" class="hover:text-white transition-colors">Events & News</a></li>
+                    </ul>
+                </div>
+
+                <!-- Get Involved -->
+                <div>
+                    <h4 class="text-xl font-bold mb-8">Get Involved</h4>
+                    <ul class="space-y-4 text-gray-400">
+                        <li><a href="donation.html" class="hover:text-white transition-colors">Make a Donation</a></li>
+                        <li><a href="contact.html#volunteer" class="hover:text-white transition-colors">Volunteer Opportunities</a></li>
+                        <li><a href="login.html" class="hover:text-white transition-colors">Member Login</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition-colors">Contact Information</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="text-xl font-bold mb-8">Contact Info</h4>
+                    <div class="space-y-4 text-gray-400">
+                        <div class="flex items-start space-x-4">
+                            <i class="fas fa-phone mt-1 text-blue-400 text-xl"></i>
+                            <span>+231 XXX XXX XXX</span>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <i class="fas fa-envelope mt-1 text-blue-400 text-xl"></i>
+                            <span>info@pgaf.org</span>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <i class="fas fa-map-marker-alt mt-1 text-blue-400 text-xl"></i>
+                            <span>Monrovia, Montserrado County<br>Liberia</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400 text-sm">
+                <p>&copy; 2026 Passionate Goals Achievers Foundation (PGAF). All rights reserved. | Monrovia, Liberia</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            checkAuthStatus();
+        });
+
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        }
+
+        function checkAuthStatus() {
+            const user = getCurrentUser();
+            const userStatus = document.getElementById('userStatus');
+            const loginBtn = document.getElementById('loginBtn');
+            
+            if (user) {
+                userStatus.classList.remove('hidden');
+                loginBtn.classList.add('hidden');
+                document.getElementById('userName').textContent = user.name;
+            } else {
+                userStatus.classList.add('hidden');
+                loginBtn.classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
