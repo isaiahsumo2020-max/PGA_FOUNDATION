@@ -1,12 +1,10 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Passionate Goals Achievers Foundation (PGAF) - Empowering Purpose. Transforming Lives.</title>
+    <title>Passionate Goals Achievers Foundation PGAF</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="js/authService.js" defer></script>
     <script src="js/userService.js" defer></script>
@@ -14,44 +12,59 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
 </head>
+
 <body class="font-inter bg-blue-50/50 min-h-screen antialiased">
-    
+
     <!-- Navigation -->
     <nav class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-blue-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <!-- Logo -->
                 <a href="index.html" class="flex items-center space-x-3 group">
-                    <div class="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300">
+                    <div
+                        class="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300">
                         <i class="fas fa-fire text-yellow-400 text-xl"></i>
                     </div>
                     <div>
-                        <div class="text-xl font-bold text-blue-700 tracking-tight">PGAF</div>
-                        <div class="text-xs font-semibold text-blue-600 uppercase tracking-wider">Passionate Goals Achievers Foundation</div>
+                        <div class="text-xl font-bold text-blue-800 tracking-tight">PGAF</div>
                     </div>
                 </a>
 
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 px-2 py-1 border-b-2 border-transparent hover:border-blue-500">Home</a>
-                    <a href="about.html" class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 px-2 py-1 border-b-2 border-transparent hover:border-blue-500">About</a>
-                    <a href="vision.html" class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 px-2 py-1 border-b-2 border-transparent hover:border-blue-500">Vision & Mission</a>
-                    <a href="programs.html" class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 px-2 py-1 border-b-2 border-transparent hover:border-blue-500">Programs</a>
-                    <a href="team.html" class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 px-2 py-1 border-b-2 border-transparent hover:border-blue-500">Team</a>
-                    <a href="events.html" class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 px-2 py-1 border-b-2 border-transparent hover:border-blue-500">Events</a>
-                                <a href="profile.html" class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 px-2 py-1 border-b-2 border-transparent hover:border-blue-500">Profile</a>
-                    <a href="contact.html" class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 px-2 py-1 border-b-2 border-transparent hover:border-blue-500">Contact</a>
+                    <a href="index.html"
+                        class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 px-2 py-1 border-b-2 border-transparent hover:border-blue-500">Home</a>
+                    <a href="about.html"
+                        class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 px-2 py-1 border-b-2 border-transparent hover:border-blue-500">About</a>
+                    <a href="vision.html"
+                        class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 px-2 py-1 border-b-2 border-transparent hover:border-blue-500">Vision
+                        & Mission</a>
+                    <a href="programs.html"
+                        class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 px-2 py-1 border-b-2 border-transparent hover:border-blue-500">Programs</a>
+                    <a href="team.html"
+                        class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 px-2 py-1 border-b-2 border-transparent hover:border-blue-500">Team</a>
+                    <a href="events.html"
+                        class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 px-2 py-1 border-b-2 border-transparent hover:border-blue-500">Events</a>
+                    <a href="contact.html"
+                        class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 px-2 py-1 border-b-2 border-transparent hover:border-blue-500">Contact</a>
                 </div>
 
                 <!-- Auth & Mobile -->
                 <div class="flex items-center space-x-4">
-                    <div id="userStatus" class="hidden items-center space-x-3 bg-blue-50 px-4 py-2 rounded-xl">
+                    <a href="profile.html"
+                        class="p-3 text-blue-600 hover:text-blue-700 hover:bg-blue-50 rounded-2xl transition-all">
+                        <i class="fas fa-user text-xl"></i>
                         <span id="userName" class="font-semibold text-blue-800 text-sm"></span>
-                        <button onclick="logout()" class="text-red-600 hover:text-red-700 text-sm font-medium transition-colors">Logout</button>
+                    </a>
+                    <div id="userStatus" class="hidden items-center space-x-3 bg-blue-50 px-4 py-2 rounded-xl">
+                        <button onclick="logout()"
+                            class="text-red-600 hover:text-red-700 text-sm font-medium transition-colors">Logout</button>
                     </div>
-                    <a id="loginBtn" href="login.html" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-xl font-semibold text-sm shadow-md hover:shadow-lg transition-all duration-200">
+                    <a id="loginBtn" href="login.html"
+                        class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-xl font-semibold text-sm shadow-md hover:shadow-lg transition-all duration-200">
                         Sign In
                     </a>
                     <button class="md:hidden p-2 text-blue-600 hover:text-blue-700" onclick="toggleMobileMenu()">
@@ -64,13 +77,21 @@
         <!-- Mobile Menu -->
         <div id="mobileMenu" class="md:hidden hidden bg-white border-t border-blue-100 shadow-lg">
             <div class="px-4 pt-4 pb-6 space-y-2">
-                <a href="index.html" class="block px-4 py-3 text-gray-700 hover:text-blue-600 font-medium rounded-xl hover:bg-blue-50">Home</a>
-                <a href="about.html" class="block px-4 py-3 text-gray-700 hover:text-blue-600 font-medium rounded-xl hover:bg-blue-50">About</a>
-                <a href="vision.html" class="block px-4 py-3 text-gray-700 hover:text-blue-600 font-medium rounded-xl hover:bg-blue-50">Vision & Mission</a>
-                <a href="programs.html" class="block px-4 py-3 text-gray-700 hover:text-blue-600 font-medium rounded-xl hover:bg-blue-50">Programs</a>
-                <a href="team.html" class="block px-4 py-3 text-gray-700 hover:text-blue-600 font-medium rounded-xl hover:bg-blue-50">Team</a>
-                <a href="events.html" class="block px-4 py-3 text-gray-700 hover:text-blue-600 font-medium rounded-xl hover:bg-blue-50">Events</a>
-                <a href="contact.html" class="block px-4 py-3 text-gray-700 hover:text-blue-600 font-medium rounded-xl hover:bg-blue-50">Contact</a>
+                <a href="index.html"
+                    class="block px-4 py-3 text-gray-700 hover:text-blue-600 font-medium rounded-xl hover:bg-blue-50">Home</a>
+                <a href="about.html"
+                    class="block px-4 py-3 text-gray-700 hover:text-blue-600 font-medium rounded-xl hover:bg-blue-50">About</a>
+                <a href="vision.html"
+                    class="block px-4 py-3 text-gray-700 hover:text-blue-600 font-medium rounded-xl hover:bg-blue-50">Vision
+                    & Mission</a>
+                <a href="programs.html"
+                    class="block px-4 py-3 text-gray-700 hover:text-blue-600 font-medium rounded-xl hover:bg-blue-50">Programs</a>
+                <a href="team.html"
+                    class="block px-4 py-3 text-gray-700 hover:text-blue-600 font-medium rounded-xl hover:bg-blue-50">Team</a>
+                <a href="events.html"
+                    class="block px-4 py-3 text-gray-700 hover:text-blue-600 font-medium rounded-xl hover:bg-blue-50">Events</a>
+                <a href="contact.html"
+                    class="block px-4 py-3 text-gray-700 hover:text-blue-600 font-medium rounded-xl hover:bg-blue-50">Contact</a>
             </div>
         </div>
     </nav>
@@ -81,12 +102,13 @@
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <!-- Hero Content -->
                 <div class="lg:pr-12">
-                    <div class="inline-flex items-center bg-yellow-400/90 px-6 py-3 rounded-full text-sm font-bold text-blue-900 mb-8 shadow-lg backdrop-blur-sm">
+                    <div
+                        class="inline-flex items-center bg-yellow-400/90 px-6 py-3 rounded-full text-sm font-bold text-blue-900 mb-8 shadow-lg backdrop-blur-sm">
                         <i class="fas fa-fire mr-2"></i>
                         Youth Empowerment NGO • Monrovia, Liberia
                     </div>
                     <h1 class="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
-                        Passionate Goals Achievers 
+                        Passionate Goals Achievers
                         <span class="block text-4xl lg:text-5xl text-blue-700 font-black tracking-tight">
                             Foundation (PGAF)
                         </span>
@@ -95,15 +117,17 @@
                         Empowering Purpose • Transforming Lives
                     </h2>
                     <p class="text-xl text-gray-700 mb-12 leading-relaxed max-w-2xl">
-                        We empower Liberian youth through education, entrepreneurship training, 
+                        We empower Liberian youth through education, entrepreneurship training,
                         talent development, and humanitarian outreach. Join us in creating lasting change.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="donation.html" class="group bg-blue-600 hover:bg-blue-700 text-white px-10 py-5 rounded-2xl font-bold text-xl shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center space-x-3 w-fit">
+                        <a href="donation.html"
+                            class="group bg-blue-600 hover:bg-blue-700 text-white px-10 py-5 rounded-2xl font-bold text-xl shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center space-x-3 w-fit">
                             <i class="fas fa-heart text-xl group-hover:scale-110 transition-transform"></i>
                             <span>Donate Now</span>
                         </a>
-                        <a href="programs.html" class="border-2 border-blue-200 hover:border-blue-400 hover:bg-blue-50 text-blue-700 hover:text-blue-900 px-10 py-5 rounded-2xl font-bold text-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-3">
+                        <a href="programs.html"
+                            class="border-2 border-blue-200 hover:border-blue-400 hover:bg-blue-50 text-blue-700 hover:text-blue-900 px-10 py-5 rounded-2xl font-bold text-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-3">
                             <i class="fas fa-rocket text-xl"></i>
                             <span>Our Programs</span>
                         </a>
@@ -114,19 +138,23 @@
                 <div class="relative">
                     <div class="bg-white/80 backdrop-blur-xl rounded-3xl p-10 shadow-2xl border border-blue-100/50">
                         <div class="grid grid-cols-2 gap-8">
-                            <div class="text-center p-8 bg-blue-50/50 border border-blue-200 rounded-2xl hover:bg-blue-50 transition-colors">
+                            <div
+                                class="text-center p-8 bg-blue-50/50 border border-blue-200 rounded-2xl hover:bg-blue-50 transition-colors">
                                 <div class="text-4xl font-bold text-blue-700 mb-3">8,500+</div>
                                 <div class="text-lg font-semibold text-blue-900">Youth Empowered</div>
                             </div>
-                            <div class="text-center p-8 bg-yellow-50/50 border border-yellow-200 rounded-2xl hover:bg-yellow-50 transition-colors">
+                            <div
+                                class="text-center p-8 bg-yellow-50/50 border border-yellow-200 rounded-2xl hover:bg-yellow-50 transition-colors">
                                 <div class="text-4xl font-bold text-yellow-600 mb-3">$450K+</div>
                                 <div class="text-lg font-semibold text-yellow-900">Donations Raised</div>
                             </div>
-                            <div class="text-center p-8 bg-emerald-50/50 border border-emerald-200 rounded-2xl hover:bg-emerald-50 transition-colors">
+                            <div
+                                class="text-center p-8 bg-emerald-50/50 border border-emerald-200 rounded-2xl hover:bg-emerald-50 transition-colors">
                                 <div class="text-4xl font-bold text-emerald-700 mb-3">200+</div>
                                 <div class="text-lg font-semibold text-emerald-900">Programs Delivered</div>
                             </div>
-                            <div class="text-center p-8 bg-orange-50/50 border border-orange-200 rounded-2xl hover:bg-orange-50 transition-colors">
+                            <div
+                                class="text-center p-8 bg-orange-50/50 border border-orange-200 rounded-2xl hover:bg-orange-50 transition-colors">
                                 <div class="text-4xl font-bold text-orange-700 mb-3">75+</div>
                                 <div class="text-lg font-semibold text-orange-900">Communities Served</div>
                             </div>
@@ -142,43 +170,56 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-20">
                 <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">Get Involved Today</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Choose how you want to make a difference in the lives of Liberian youth.</p>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Choose how you want to make a difference in the lives
+                    of Liberian youth.</p>
             </div>
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Donate -->
-                <div class="group text-center p-10 rounded-3xl bg-blue-50/50 border-2 border-blue-100 hover:border-blue-200 hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 cursor-pointer">
-                    <div class="w-24 h-24 bg-blue-600 rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-2xl group-hover:scale-110 transition-transform duration-300">
+                <div
+                    class="group text-center p-10 rounded-3xl bg-blue-50/50 border-2 border-blue-100 hover:border-blue-200 hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 cursor-pointer">
+                    <div
+                        class="w-24 h-24 bg-blue-600 rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-2xl group-hover:scale-110 transition-transform duration-300">
                         <i class="fas fa-heart text-3xl text-white"></i>
                     </div>
                     <h3 class="text-3xl font-bold text-gray-900 mb-6">Donate</h3>
-                    <p class="text-xl text-gray-600 mb-10 leading-relaxed">Support our life-changing programs with your generous contribution.</p>
-                    <a href="donation.html" class="inline-flex items-center space-x-3 bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-2xl font-bold text-lg shadow-xl hover:shadow-2xl transition-all duration-300">
+                    <p class="text-xl text-gray-600 mb-10 leading-relaxed">Support our life-changing programs with your
+                        generous contribution.</p>
+                    <a href="donation.html"
+                        class="inline-flex items-center space-x-3 bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-2xl font-bold text-lg shadow-xl hover:shadow-2xl transition-all duration-300">
                         <span>Donate Now</span>
                         <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
 
                 <!-- Volunteer -->
-                <div class="group text-center p-10 rounded-3xl bg-emerald-50/50 border-2 border-emerald-100 hover:border-emerald-200 hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 cursor-pointer">
-                    <div class="w-24 h-24 bg-emerald-600 rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-2xl group-hover:scale-110 transition-transform duration-300">
+                <div
+                    class="group text-center p-10 rounded-3xl bg-emerald-50/50 border-2 border-emerald-100 hover:border-emerald-200 hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 cursor-pointer">
+                    <div
+                        class="w-24 h-24 bg-emerald-600 rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-2xl group-hover:scale-110 transition-transform duration-300">
                         <i class="fas fa-hands-helping text-3xl text-white"></i>
                     </div>
                     <h3 class="text-3xl font-bold text-gray-900 mb-6">Volunteer</h3>
-                    <p class="text-xl text-gray-600 mb-10 leading-relaxed">Join our team and directly impact communities across Liberia.</p>
-                    <a href="contact.html#volunteer" class="inline-flex items-center space-x-3 bg-emerald-600 hover:bg-emerald-700 text-white px-10 py-4 rounded-2xl font-bold text-lg shadow-xl hover:shadow-2xl transition-all duration-300">
+                    <p class="text-xl text-gray-600 mb-10 leading-relaxed">Join our team and directly impact communities
+                        across Liberia.</p>
+                    <a href="contact.html#volunteer"
+                        class="inline-flex items-center space-x-3 bg-emerald-600 hover:bg-emerald-700 text-white px-10 py-4 rounded-2xl font-bold text-lg shadow-xl hover:shadow-2xl transition-all duration-300">
                         <span>Join Us</span>
                         <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
 
                 <!-- Partner -->
-                <div class="group text-center p-10 rounded-3xl bg-orange-50/50 border-2 border-orange-100 hover:border-orange-200 hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 cursor-pointer">
-                    <div class="w-24 h-24 bg-orange-600 rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-2xl group-hover:scale-110 transition-transform duration-300">
+                <div
+                    class="group text-center p-10 rounded-3xl bg-orange-50/50 border-2 border-orange-100 hover:border-orange-200 hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 cursor-pointer">
+                    <div
+                        class="w-24 h-24 bg-orange-600 rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-2xl group-hover:scale-110 transition-transform duration-300">
                         <i class="fas fa-handshake text-3xl text-white"></i>
                     </div>
                     <h3 class="text-3xl font-bold text-gray-900 mb-6">Partner</h3>
-                    <p class="text-xl text-gray-600 mb-10 leading-relaxed">Collaborate with us to amplify impact through corporate partnerships.</p>
-                    <a href="contact.html#partner" class="inline-flex items-center space-x-3 bg-orange-600 hover:bg-orange-700 text-white px-10 py-4 rounded-2xl font-bold text-lg shadow-xl hover:shadow-2xl transition-all duration-300">
+                    <p class="text-xl text-gray-600 mb-10 leading-relaxed">Collaborate with us to amplify impact through
+                        corporate partnerships.</p>
+                    <a href="contact.html#partner"
+                        class="inline-flex items-center space-x-3 bg-orange-600 hover:bg-orange-700 text-white px-10 py-4 rounded-2xl font-bold text-lg shadow-xl hover:shadow-2xl transition-all duration-300">
                         <span>Contact Us</span>
                         <i class="fas fa-arrow-right"></i>
                     </a>
@@ -192,41 +233,54 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-20">
                 <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">Our Core Programs</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Comprehensive youth development initiatives designed for maximum impact.</p>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Comprehensive youth development initiatives designed
+                    for maximum impact.</p>
             </div>
             <div class="grid lg:grid-cols-3 gap-8">
                 <!-- Education -->
-                <div class="group bg-white rounded-3xl p-12 shadow-xl hover:shadow-2xl border border-blue-100 hover:border-blue-200 hover:-translate-y-2 transition-all duration-500">
-                    <div class="w-20 h-20 bg-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-8 shadow-2xl group-hover:scale-110 transition-transform">
+                <div
+                    class="group bg-white rounded-3xl p-12 shadow-xl hover:shadow-2xl border border-blue-100 hover:border-blue-200 hover:-translate-y-2 transition-all duration-500">
+                    <div
+                        class="w-20 h-20 bg-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-8 shadow-2xl group-hover:scale-110 transition-transform">
                         <i class="fas fa-graduation-cap text-2xl text-white"></i>
                     </div>
                     <h3 class="text-3xl font-bold text-gray-900 mb-6 text-center">Education & Capacity Building</h3>
-                    <p class="text-gray-600 text-center mb-10 leading-relaxed">Scholarships, vocational training, and mentorship programs for underprivileged youth.</p>
-                    <a href="programs.html#education" class="w-full block bg-blue-600 hover:bg-blue-700 text-white py-4 px-8 rounded-2xl font-bold text-center shadow-xl hover:shadow-2xl transition-all duration-300">
+                    <p class="text-gray-600 text-center mb-10 leading-relaxed">Scholarships, vocational training, and
+                        mentorship programs for underprivileged youth.</p>
+                    <a href="programs.html#education"
+                        class="w-full block bg-blue-600 hover:bg-blue-700 text-white py-4 px-8 rounded-2xl font-bold text-center shadow-xl hover:shadow-2xl transition-all duration-300">
                         Learn More
                     </a>
                 </div>
 
                 <!-- Entrepreneurship -->
-                <div class="group bg-white rounded-3xl p-12 shadow-xl hover:shadow-2xl border border-emerald-100 hover:border-emerald-200 hover:-translate-y-2 transition-all duration-500">
-                    <div class="w-20 h-20 bg-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-8 shadow-2xl group-hover:scale-110 transition-transform">
+                <div
+                    class="group bg-white rounded-3xl p-12 shadow-xl hover:shadow-2xl border border-emerald-100 hover:border-emerald-200 hover:-translate-y-2 transition-all duration-500">
+                    <div
+                        class="w-20 h-20 bg-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-8 shadow-2xl group-hover:scale-110 transition-transform">
                         <i class="fas fa-briefcase text-2xl text-white"></i>
                     </div>
                     <h3 class="text-3xl font-bold text-gray-900 mb-6 text-center">Job Creation & Entrepreneurship</h3>
-                    <p class="text-gray-600 text-center mb-10 leading-relaxed">Startup incubators, business training, and microfinance opportunities.</p>
-                    <a href="programs.html#entrepreneurship" class="w-full block bg-emerald-600 hover:bg-emerald-700 text-white py-4 px-8 rounded-2xl font-bold text-center shadow-xl hover:shadow-2xl transition-all duration-300">
+                    <p class="text-gray-600 text-center mb-10 leading-relaxed">Startup incubators, business training,
+                        and microfinance opportunities.</p>
+                    <a href="programs.html#entrepreneurship"
+                        class="w-full block bg-emerald-600 hover:bg-emerald-700 text-white py-4 px-8 rounded-2xl font-bold text-center shadow-xl hover:shadow-2xl transition-all duration-300">
                         Learn More
                     </a>
                 </div>
 
                 <!-- Creativity -->
-                <div class="group bg-white rounded-3xl p-12 shadow-xl hover:shadow-2xl border border-orange-100 hover:border-orange-200 hover:-translate-y-2 transition-all duration-500">
-                    <div class="w-20 h-20 bg-orange-600 rounded-2xl flex items-center justify-center mx-auto mb-8 shadow-2xl group-hover:scale-110 transition-transform">
+                <div
+                    class="group bg-white rounded-3xl p-12 shadow-xl hover:shadow-2xl border border-orange-100 hover:border-orange-200 hover:-translate-y-2 transition-all duration-500">
+                    <div
+                        class="w-20 h-20 bg-orange-600 rounded-2xl flex items-center justify-center mx-auto mb-8 shadow-2xl group-hover:scale-110 transition-transform">
                         <i class="fas fa-palette text-2xl text-white"></i>
                     </div>
                     <h3 class="text-3xl font-bold text-gray-900 mb-6 text-center">Creativity & Talent Development</h3>
-                    <p class="text-gray-600 text-center mb-10 leading-relaxed">Arts, music, sports, and creative industry talent development programs.</p>
-                    <a href="programs.html#creativity" class="w-full block bg-orange-600 hover:bg-orange-700 text-white py-4 px-8 rounded-2xl font-bold text-center shadow-xl hover:shadow-2xl transition-all duration-300">
+                    <p class="text-gray-600 text-center mb-10 leading-relaxed">Arts, music, sports, and creative
+                        industry talent development programs.</p>
+                    <a href="programs.html#creativity"
+                        class="w-full block bg-orange-600 hover:bg-orange-700 text-white py-4 px-8 rounded-2xl font-bold text-center shadow-xl hover:shadow-2xl transition-all duration-300">
                         Learn More
                     </a>
                 </div>
@@ -238,13 +292,16 @@
     <section class="py-24 bg-blue-600 text-white">
         <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
             <h2 class="text-4xl lg:text-5xl font-bold mb-8">Ready to Transform Lives?</h2>
-            <p class="text-2xl mb-12 opacity-90 leading-relaxed max-w-3xl mx-auto">Together, we can empower Liberian youth to achieve their fullest potential.</p>
+            <p class="text-2xl mb-12 opacity-90 leading-relaxed max-w-3xl mx-auto">Together, we can empower Liberian
+                youth to achieve their fullest potential.</p>
             <div class="flex flex-col sm:flex-row gap-6 justify-center items-center max-w-2xl mx-auto">
-                <a href="donation.html" class="flex-1 bg-white hover:bg-blue-50 text-blue-700 px-12 py-6 rounded-2xl font-bold text-xl shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center justify-center space-x-3">
+                <a href="donation.html"
+                    class="flex-1 bg-white hover:bg-blue-50 text-blue-700 px-12 py-6 rounded-2xl font-bold text-xl shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center justify-center space-x-3">
                     <i class="fas fa-heart text-2xl"></i>
                     <span>Make a Donation</span>
                 </a>
-                <a href="contact.html" class="flex-1 border-2 border-white hover:border-blue-200 px-12 py-6 rounded-2xl font-bold text-xl hover:bg-white/20 backdrop-blur-sm transition-all duration-300">
+                <a href="contact.html"
+                    class="flex-1 border-2 border-white hover:border-blue-200 px-12 py-6 rounded-2xl font-bold text-xl hover:bg-white/20 backdrop-blur-sm transition-all duration-300">
                     Contact Us
                 </a>
             </div>
@@ -263,21 +320,28 @@
                         </div>
                         <div>
                             <div class="text-2xl font-bold text-white">PGAF</div>
-                            <div class="text-blue-400 font-semibold text-sm">Empowering Purpose. Transforming Lives.</div>
+                            <div class="text-blue-400 font-semibold text-sm">Giving Hope . Creating Opportunities
+                            </div>
                         </div>
                     </a>
-                    <p class="text-gray-400 mb-8 leading-relaxed text-lg">Passionate Goals Achievers Foundation is dedicated to youth empowerment through education, entrepreneurship, and humanitarian outreach in Liberia.</p>
+                    <p class="text-gray-400 mb-8 leading-relaxed text-lg">Passionate Goals Achievers Foundation is
+                        dedicated to charity, humanitarian outreach, youth empowerment through education and entrepreneurship in
+                        Liberia.</p>
                     <div class="flex space-x-4">
-                        <a href="#" class="w-12 h-12 bg-gray-800 hover:bg-blue-600 rounded-2xl flex items-center justify-center transition-all duration-200">
+                        <a href="https://www.facebook.com/profile.php?id=61585707315568"
+                            class="w-12 h-12 bg-gray-800 hover:bg-blue-600 rounded-2xl flex items-center justify-center transition-all duration-200">
                             <i class="fab fa-facebook-f text-white"></i>
                         </a>
-                        <a href="#" class="w-12 h-12 bg-gray-800 hover:bg-blue-600 rounded-2xl flex items-center justify-center transition-all duration-200">
+                        <a href="#"
+                            class="w-12 h-12 bg-gray-800 hover:bg-blue-600 rounded-2xl flex items-center justify-center transition-all duration-200">
                             <i class="fab fa-twitter"></i>
                         </a>
-                        <a href="#" class="w-12 h-12 bg-gray-800 hover:bg-blue-600 rounded-2xl flex items-center justify-center transition-all duration-200">
+                        <a href="#"
+                            class="w-12 h-12 bg-gray-800 hover:bg-blue-600 rounded-2xl flex items-center justify-center transition-all duration-200">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="#" class="w-12 h-12 bg-gray-800 hover:bg-blue-600 rounded-2xl flex items-center justify-center transition-all duration-200">
+                        <a href="#"
+                            class="w-12 h-12 bg-gray-800 hover:bg-blue-600 rounded-2xl flex items-center justify-center transition-all duration-200">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
                     </div>
@@ -300,9 +364,11 @@
                     <h4 class="text-xl font-bold mb-8">Get Involved</h4>
                     <ul class="space-y-4 text-gray-400">
                         <li><a href="donation.html" class="hover:text-white transition-colors">Make a Donation</a></li>
-                        <li><a href="contact.html#volunteer" class="hover:text-white transition-colors">Volunteer Opportunities</a></li>
+                        <li><a href="contact.html#volunteer" class="hover:text-white transition-colors">Volunteer
+                                Opportunities</a></li>
                         <li><a href="login.html" class="hover:text-white transition-colors">Member Login</a></li>
-                        <li><a href="contact.html" class="hover:text-white transition-colors">Contact Information</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition-colors">Contact Information</a>
+                        </li>
                     </ul>
                 </div>
 
@@ -312,27 +378,30 @@
                     <div class="space-y-4 text-gray-400">
                         <div class="flex items-start space-x-4">
                             <i class="fas fa-phone mt-1 text-blue-400 text-xl"></i>
-                            <span>+231 XXX XXX XXX</span>
+                            <a href="https://wa.me/message/KSGR7ZMWDQTYI1" class="hover:text-blue-700 transition">+231 776 750 865</a>
                         </div>
                         <div class="flex items-start space-x-4">
                             <i class="fas fa-envelope mt-1 text-blue-400 text-xl"></i>
-                            <span>info@pgaf.org</span>
+                            <a href="mailto:pgafoundation.liberia@gmail.com"
+                                class="hover:text-blue-700 transition">pgafoundation.libria@gmail.com</a>
                         </div>
                         <div class="flex items-start space-x-4">
                             <i class="fas fa-map-marker-alt mt-1 text-blue-400 text-xl"></i>
-                            <span>Monrovia, Montserrado County<br>Liberia</span>
+                            <a href="map.html" class="hover:text-blue-700 transition"> Monrovia, Montserrado County<br>Liberia</span>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400 text-sm">
-                <p>&copy; 2026 Passionate Goals Achievers Foundation (PGAF). All rights reserved. | Monrovia, Liberia</p>
+                <p>&copy; 2026 Passionate Goals Achievers Foundation (PGAF). All rights reserved. | Monrovia, Liberia
+                </p>
             </div>
         </div>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             checkAuthStatus();
         });
 
@@ -344,7 +413,7 @@
             const user = getCurrentUser();
             const userStatus = document.getElementById('userStatus');
             const loginBtn = document.getElementById('loginBtn');
-            
+
             if (user) {
                 userStatus.classList.remove('hidden');
                 loginBtn.classList.add('hidden');
@@ -356,4 +425,5 @@
         }
     </script>
 </body>
+
 </html>

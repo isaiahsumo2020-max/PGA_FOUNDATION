@@ -1,18 +1,15 @@
-// authService.js - Handles authentication with localStorage
 class AuthService {
     constructor() {
         this.USERS_KEY = 'pgaf_users';
         this.CURRENT_USER_KEY = 'pgaf_current_user';
     }
-
-    // Initialize demo users
-    initDemoUsers() {
+ initDemoUsers() {
         const demoUsers = [
             {
                 id: '1',
                 name: 'John Doe',
                 email: 'john@example.com',
-                password: 'password123', // Demo only
+                password: 'password123', 
                 role: 'user',
                 bio: 'Passionate about youth empowerment and education.',
                 profilePhoto: null,
@@ -22,7 +19,7 @@ class AuthService {
                 id: 'admin',
                 name: 'Admin User',
                 email: 'admin@pgaf.org',
-                password: 'admin123', // Demo only
+                password: 'admin123',
                 role: 'admin',
                 bio: 'PGAF Administrator',
                 profilePhoto: null,

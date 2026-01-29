@@ -1,4 +1,4 @@
-// donationService.js - Handles donation operations
+
 class DonationService {
     constructor() {
         this.DONATIONS_KEY = 'pgaf_donations';
